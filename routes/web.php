@@ -10,7 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware'=>['web','admin']],function(){
+    Route::get('/adminpanel','AdminController@index');
+    Route::resource('/adminpanel/users','UsersController');
+    
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,4 +22,3 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/adminpanel','AdminController@index');
