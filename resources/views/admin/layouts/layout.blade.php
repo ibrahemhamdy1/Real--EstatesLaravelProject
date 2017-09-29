@@ -631,7 +631,7 @@
         <!-- Bootstrap WYSIHTML5 -->
         {!! Html::script('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')!!}
 
-        <!-- Slimscroll --> sdsd
+        <!-- Slimscroll --> 
         {!! Html::script('admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')!!}
 
         <!-- FastClick -->

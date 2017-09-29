@@ -9,7 +9,8 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
       <h1 style="margin: 30px;">
-            اضاف عضو 
+تعديل عضو
+{{$user->name}}
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{url('/adminpanel')}}"><i class="fa fa-dashboard"></i> الرئيسة </a></li>
@@ -35,21 +36,83 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/adminpanel/users') }}">
+                        {!!Form::model($user,array('method'=>'PATCH','action'=>['UsersController@update',$user->id]))!!}
+                            @include('admin.user.form')
+                            <div class="clearfix">
+                        </div>
+                            <div class="col-md-2 ">
+                                <button type="submit" class="btn btn-primary ">
+                                        تنفيذ 
+                                </button>
+                            </div>
+                            <div class="clearfix">
+                        </div>
+                        {!! Form::close() !!}
 
-                        @include('admin.user.form')
-
+                        
                     </form>
                 </div>
             </div>            
         </div>        
     </div>
-</section>            
+
+               
+</section>
+
+
+
+{{-- Start the pass word  section  --}}
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                            تعديل كلمة  مرور  العضو                
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                        {!!Form::open(['url'=>'/adminpanel/users/changePassword','method'=>'post'])!!}
+                           <input type="hidden" value="{{$user->id}}" name="user_id">
+                           <div class="text2{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                            <div class="col-md-10 ">
+                                <input placeholder="الرقم السرى  " id="password" type="password" class="form-control" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-2 ">
+                                <button type="submit" class="btn btn-primary ">
+                                        تغير البسورد 
+                                </button>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                        <br>    
+                        
+                        {!! Form::close() !!}
+
+                        
+                </div>
+            </div>            
+        </div>        
+    </div>
+
+               
+</section>
+{{-- end the pass word  section  --}}
 
 @endsection
 
 
-
+ 
 
 
 

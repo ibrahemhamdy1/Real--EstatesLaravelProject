@@ -13,7 +13,10 @@
 Route::group(['middleware'=>['web','admin']],function(){
     Route::get('/adminpanel','AdminController@index');
     Route::resource('/adminpanel/users','UsersController');
+    Route::post('/adminpanel/users/changePassword/','UsersController@UpdatePassword');
+    // Route::post('/adminpanel/users/update/','UsersController@update');
     
+   
 });
 Route::get('/', function () {
     return view('welcome');

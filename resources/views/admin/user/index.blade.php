@@ -53,8 +53,8 @@
                     <td>{{ $userinfo->email }}</td>
                     <td>{{ $userinfo->create_at}}</td>
                     <td>{{$userinfo->admin ==1 ?'مدير':'عضو'}}</td>
-                    <td><a href="{{url('adminpanel/users/'.$userinfo->id.'/edit')}}"></a></td>
-                    <td><a href="{{url('adminpanel/users/'.$userinfo->id.'/delete')}}"></a></td>
+                    <td><a href="{{url('adminpanel/users/'.$userinfo->id.'/edit')}}"> تعديل</a></td>
+                    <td><a href="{{url('adminpanel/users/'.$userinfo->id.'/delete')}}">حذف</a></td>
 
                   </tr>
                 @endforeach
