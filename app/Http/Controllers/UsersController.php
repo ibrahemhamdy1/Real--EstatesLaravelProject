@@ -7,8 +7,9 @@ use App\Http\Requests\AddUserRequestAdmin;
 class UsersController extends Controller
 {
 
-    public function index(){
-        return view('admin.user.index');
+    public function index(User $user){
+        $user=$user->all();
+        return view('admin.user.index',compact('user'));
     }
 
     public function create(){
@@ -23,5 +24,11 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
         ]);
         return redirect('/adminpanel/users');
+    }
+
+    public function edit($id,User $user)
+    {
+       $user =$user->find($id);
+       return  view('admin.user.edit',compact('user'));
     }
 }
