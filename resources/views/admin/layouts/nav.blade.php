@@ -9,8 +9,11 @@
             </div>
     </a>
     <ul class="treeview-menu">
+    
         <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
         <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                <li><a href="{{url('adminpanel/sitesetting')}}"><i class="fa fa-circle-o"></i>الاعدادات</a></li>
+
     </ul>
 </li>
 
@@ -28,5 +31,6 @@
     <ul class="treeview-menu">
         <li class="active"><a href="{{url('adminpanel/users/create')}}"><i class="fa fa-circle-o"></i> اضف عضو</a></li>
         <li><a href="{{url('adminpanel/users')}}"><i class="fa fa-circle-o"></i>كل الاعضاء</a></li>
+
     </ul>
 </li>

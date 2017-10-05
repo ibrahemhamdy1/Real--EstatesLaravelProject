@@ -11,13 +11,20 @@
 |
 */
 Route::group(['middleware'=>['web','admin']],function(){
+    #dataTable  ajax 
+    Route::get('/adminpanel/users/data',['as'=>'adminpanel.user.data','uses'=>'UsersController@anyData']);
+    
     Route::get('/adminpanel','AdminController@index');
     Route::resource('/adminpanel/users','UsersController');
-    Route::post('/adminpanel/users/changePassword/','UsersController@UpdatePassword');
-    // Route::post('/adminpanel/users/update/','UsersController@update');
     
+    Route::post('/adminpanel/users/changePassword/','UsersController@UpdatePassword');
+     Route::get('/adminpanel/users/{id}/delete','UsersController@destroy');
+
+     Route::resource('/adminpanel/sitesetting','SiteSettingController');
+     
    
 });
+
 Route::get('/', function () {
     return view('welcome');
 });

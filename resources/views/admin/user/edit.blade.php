@@ -36,6 +36,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
+
                         {!!Form::model($user,array('method'=>'PATCH','action'=>['UsersController@update',$user->id]))!!}
                             @include('admin.user.form')
                             <div class="clearfix">
@@ -48,8 +49,9 @@
                             <div class="clearfix">
                         </div>
                         {!! Form::close() !!}
-
-                        
+                        @if($user->id!= 1)
+                      {!!Html::link('/adminpanel/users/'.$user->id.'/delete','delete',array('class'=>'btn btn-danger btn-circle'))!!}  
+                        @endif
                     </form>
                 </div>
             </div>            

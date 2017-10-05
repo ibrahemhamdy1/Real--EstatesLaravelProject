@@ -20,7 +20,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>سكريبت موقع عقارات  
+    <title>{{getString()}} 
     |
     @yield('title')
     
@@ -80,7 +80,12 @@
     {!! Html::script('website/js/jquery.flexslider.js') !!}
     <div class="footer">
   <div class="footer_bottom">
-    <div class="follow-us"> <a class="fa fa-facebook social-icon" href="#"></a> <a class="fa fa-twitter social-icon" href="#"></a> <a class="fa fa-linkedin social-icon" href="#"></a> <a class="fa fa-google-plus social-icon" href="#"></a> </div>
+    <div class="follow-us"> 
+            <a class="fa fa-facebook social-icon" href="{{getString('Facebook')}} " target="_blank"></a>
+            <a class="fa fa-twitter social-icon" href="{{getString('twitter')}}" target="_blank"></a>
+            <a class="fa fa-linkedin social-icon" href="{{getString('Facebook')}}" target="_blank"></a>
+            <a class="fa fa-youtube social-icon" href="{{getString('Youtube')}}" target="_blank"></a> 
+       </div>
     <div class="copy">
       <p>Copyright &copy; 2015 Company Name. Design by <a href="http://www.templategarden.com" rel="nofollow">TemplateGarden</a></p>
     </div>
