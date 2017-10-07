@@ -28,7 +28,7 @@ class CreateBuildingsTable extends Migration
             $table->smallInteger('bu_status');
             $table->timestamps();
             $table->integer('user_id');
-            
+            $table->integer('rooms');
         });
     }
 

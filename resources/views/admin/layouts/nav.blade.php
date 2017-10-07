@@ -34,3 +34,21 @@
 
     </ul>
 </li>
+
+{{-- Bildings --}}
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-users pull-left"></i>
+           <span class="pull-left" style="margin-left:25px;">التحكم  فى العقارات</span>
+                            
+           <i class="fa fa-angle-left pull-left"></i>
+           <div class="clearfix">
+                            
+            </div>
+    </a>
+    <ul class="treeview-menu">
+        <li class="active"><a href="{{url('adminpanel/bu/create')}}"><i class="fa fa-circle-o"></i> اضف عقار</a></li>
+        <li><a href="{{url('adminpanel/bu')}}"><i class="fa fa-circle-o"></i>كل العقارات</a></li>
+
+    </ul>
+</li>
