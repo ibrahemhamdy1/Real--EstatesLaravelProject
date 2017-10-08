@@ -25,6 +25,6 @@ class SiteSettingController extends Controller
         SiteSetting::findOrFail($id)->update($input);
         
 
-        return  redirect ()->back();
+        return  redirect ()->back()->withFlashMessage('you  update  a  setting');
     }
 }

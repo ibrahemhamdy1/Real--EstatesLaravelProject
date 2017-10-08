@@ -44,14 +44,9 @@
         <!-- bootstrap wysihtml5 - text editor -->
         {!! Html::style('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')!!}
 
+        {!! Html::style('cus/sweetalert2.css')!!}
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
+        
         <!-- Google Font -->
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -364,10 +359,15 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
+
+
+
             <!-- /.content-wrapper -->
             <div class="content-wrapper">
+
                 @yield('content')
             </div>
+
 
             <footer class="main-footer">
                 <div class="pull-left hidden-xs">
@@ -646,6 +646,13 @@
 
         <!-- AdminLTE for demo purposes -->
         {!! Html::script('admin/dist/js/demo.js')!!}
+        {!! Html::script('cus/sweetalert2.min.js')!!}
+
+        <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+        <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+        @include('admin.layouts.f_message')
 
         @yield('footer')
 

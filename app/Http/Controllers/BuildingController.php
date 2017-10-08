@@ -59,7 +59,7 @@ class BuildingController extends Controller
        //dd($items);
        //BuRequest::create($items);
         
-        return redirect('adminpanel/bu');
+        return redirect('adminpanel/bu')->withFlashMessage('you  created  a  new Building');
     }
 
     /**
@@ -92,9 +92,11 @@ class BuildingController extends Controller
      * @param  \App\building  $building
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, building $building)
+    public function update($id,BuRequest $request)
     {
-        //
+        $buUpdate=building::findOrFail($id);
+        $buUpdate->fill($request->all())->save();
+        return   redirect ()->back()->withFlashMessage('you  update  a  building');
     }
 
     /**
@@ -103,9 +105,10 @@ class BuildingController extends Controller
      * @param  \App\building  $building
      * @return \Illuminate\Http\Response
      */
-    public function destroy(building $building)
+    public function destroy($id)
     {
-        //
+        building::findOrFail($id)->delete();
+        return   redirect ()->back()->withFlashMessage('you  destroy  a  building');
     }
 
     public function anyData(building $bu)

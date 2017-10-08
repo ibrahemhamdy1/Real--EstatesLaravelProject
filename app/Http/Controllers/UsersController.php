@@ -5,6 +5,8 @@ use  App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddUserRequestAdmin;
 use    DataTables;
+use App\building;
+
 class UsersController extends Controller
 {
 
@@ -23,7 +25,7 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
-        return redirect('/adminpanel/users');
+        return redirect('/adminpanel/users')->withFlashMessage('you  add  a  new user');
     }
 
     public function edit($id )
@@ -38,25 +40,26 @@ class UsersController extends Controller
         User::findOrFail($id)->update($input);
         
 
-        return  redirect ()->back();
+        return  redirect ()->back()->withFlashMessage('you  update  a  new ');
     }
     // for update the  passowrd  of  the  user  only
     public function UpdatePassword(Request $request,User $user)
     {
        
-    $userUpdated=$user->find($request->user_id);
-    //dd($userUpdated);
-    $password=$request->password;
-    //dd($request->password);
-    $userUpdated->fill(['password'=>$password])->save();
-    return redirect ()->back();
+        $userUpdated=$user->find($request->user_id);
+        //dd($userUpdated);
+        $password=$request->password;
+        //dd($request->password);
+        $userUpdated->fill(['password'=>$password])->save();
+        return redirect ()->back()->withFlashMessage('you  update a   user password');
 }
 
 public function destroy($id)
 {
     // dd($id);
     User::findOrFail($id)->delete();
-    return  redirect('/adminpanel/users');
+    building::where('user_id',$id)->delete();
+    return  redirect('/adminpanel/users')->withFlashMessage('you  delete  a   user');
 }
 
 
