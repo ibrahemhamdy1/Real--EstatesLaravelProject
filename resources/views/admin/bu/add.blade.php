@@ -30,7 +30,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('/adminpanel/bu') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('adminpanel/bu') }}">
 
                         @include('admin.bu.form')
 

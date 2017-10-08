@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\building;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request ;
+use App\Http\Requests\BuRequest;
+use    DataTables;
 
+use Auth ;
 class BuildingController extends Controller
 {
     /**
@@ -33,9 +36,30 @@ class BuildingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BuRequest $request,building $bu)
     {
-        //
+        $user = Auth::user();
+       
+
+           $bu->create([
+                   'bu_name'       =>$request->bu_name,
+                   'bu_price'      =>$request->bu_price,
+                   'bu_rent'       =>$request->bu_rent,
+                   'bu_square'     =>$request->bu_square,
+                   'bu_type'       =>$request->bu_type,
+                   'bu_small_dis'  =>$request->bu_small_dis,
+                   'bu_meta'       =>$request->bu_meta,
+                   'bu_longitude'  =>$request->bu_longitude,
+                   'bu_latitude'   =>$request->bu_latitude,
+                   'bu_large_dis'  =>$request->bu_large_dis,
+                   'bu_status'     =>$request->bu_status,
+                   'rooms'         =>$request->rooms,
+                   'user_id'       =>$user->id,
+        ]);
+       //dd($items);
+       //BuRequest::create($items);
+        
+        return redirect('adminpanel/bu');
     }
 
     /**
@@ -55,9 +79,10 @@ class BuildingController extends Controller
      * @param  \App\building  $building
      * @return \Illuminate\Http\Response
      */
-    public function edit(building $building)
+    public function edit($id)
     {
-        //
+        $bu=building::find($id);
+        return  view('admin.bu.edit',compact('bu'));
     }
 
     /**

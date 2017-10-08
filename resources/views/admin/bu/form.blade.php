@@ -105,7 +105,7 @@
         <br>
      <!-- end  bu_type  -->
      <!-- bu_status -->
-        <div class="{{ $errors->has('bu_large_dis') ? ' has-error' : '' }}">
+        <div class="{{ $errors->has('bu_status') ? ' has-error' : '' }}">
             
              <div class="col-md-10">
                 {!! Form::select("bu_status",status(),null,['class'=>'form-control']) !!}
@@ -139,14 +139,31 @@
         <br>
      <!-- end  bu_meta  -->
      <!-- bu_small_dis -->
-        <div class="{{ $errors->has('bu_meta') ? ' has-error' : '' }}">
+        <div class="{{ $errors->has('bu_small_dis') ? ' has-error' : '' }}">
             
              <div class="col-md-10">
-                {!! Form::textarea("bu_small_dis",null,['class'=>'form-control','rows'=>'4']) !!}
+                {!! Form::text("bu_small_dis",null,['class'=>'form-control']) !!}
 
                          @if ($errors->has('bu_small_dis'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('bu_small_dis') }}</strong>
+                            </span>
+                         @endif
+             </div>
+            <label class="col-md-2">نص  قصير  للعقار  </label>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+     <!-- end  bu_small_dis  -->
+     <!-- bu_large_dis  -->
+        <div class="{{ $errors->has('bu_large_dis ') ? ' has-error' : '' }}">
+            
+             <div class="col-md-10">
+                {!! Form::textarea("bu_large_dis",null,['class'=>'form-control','rows'=>'4']) !!}
+
+                         @if ($errors->has('bu_large_dis '))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('bu_large_dis') }}</strong>
                             </span>
                          @endif
                          <div class="alert alert-warning">لا يمكن ادخال  اكثر  من  160 حرف على حسب  معيار  جوجول</div>
@@ -155,7 +172,7 @@
         </div>
         <div class="clearfix"></div>
         <br>
-     <!-- end  bu_small_dis  -->
+     <!-- end  bu_large_dis  -->
      <!-- bu_longitude -->
         <div class="{{ $errors->has('bu_longitude') ? ' has-error' : '' }}">
             
