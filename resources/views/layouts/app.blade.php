@@ -30,7 +30,7 @@
 
     <!-- Styles -->
 </head>
-<body style="direction:rtl">
+<body style="direction: rtl;background-color: #eee;">
 
 
     <div class="header">
