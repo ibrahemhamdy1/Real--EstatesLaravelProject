@@ -19,7 +19,7 @@ function bu_rent()
 }
 function status()
 {
-	$array=['مفعل','غير  مفعل'];
+	$array=['0'=>'غير  مفعل','1'=>'مفعل'];
 	return  $array;
 }
 ?>

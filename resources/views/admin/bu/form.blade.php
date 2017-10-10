@@ -108,7 +108,7 @@
         <div class="{{ $errors->has('bu_status') ? ' has-error' : '' }}">
             
              <div class="col-md-10">
-                {!! Form::select("bu_status",status(),null,['class'=>'form-control']) !!}
+                {!! Form::select("bu_status",status('bu_status'),null,['class'=>'form-control']) !!}
 
                          @if ($errors->has('bu_status'))
                             <span class="help-block">
