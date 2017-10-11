@@ -41,6 +41,7 @@
             <li><a href="about.html">من  نحن </a></li>
             <li><a href="services.html">خدمتنا</a></li>
             <li><a href="contact.html">اتصل بنا </a></li>
+
             @guest
                             <li><a href="{{ route('login') }}">تسجيل الدخول</a></li>
                             <li><a href="{{ route('register') }}">تسجيل عضو  جديد</a></li>

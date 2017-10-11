@@ -1,14 +1,14 @@
 @if(count($buAll)>0)
 
 	@foreach($buAll as $b)
-		<div class="col-md-3 col-sm-6 text-center">
+		<div class="col-md-3 col-sm-6 text-center pull-right">
             <span class="thumbnail">
                 <img src="https://s12.postimg.org/41uq0fc4d/item_2_180x200.png" alt="...">
                 <h4>{{$b->bu_name}}</h4>
                 
                 <p>{{str_limit($b->bu_small_dis,10)}} </p>
                 <hr class="line">
-                <div class="row">
+                <div class="row ">
                     <div class="col-md-6 col-sm-6">
                         <p class="price">{{$b->bu_price}}</p>
                     </div>

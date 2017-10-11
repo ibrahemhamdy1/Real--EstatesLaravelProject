@@ -15,6 +15,11 @@
     	<div class="col-md-9">
             <div class="profile-content">
 			        @include('website.bu.shearfile')
+			        <div class="text-center">
+			        	{{$buAll->appends(Request::except('page'))->render()}}
+
+			        </div>
+			        	
             </div>
 		</div>
 		<div class="col-md-3">
@@ -41,28 +46,46 @@
 				</div>
 				<!-- END SIDEBAR BUTTONS -->
 				<!-- SIDEBAR MENU -->
+
 				<div class="profile-usermenu">
 					<ul class="nav" style="padding-right:0">
 						<li class="active">
-							<a href="#">
+							<a href="{{ url('/ShowAllBulding')}}">
 							<i class="glyphicon glyphicon-home"></i>
-							Overview </a>
+							كل العقارات</a>
 						</li>
 						<li>
-							<a href="#">
+						<li class="active">
+							<a href="{{ url('/ForBuy')}}">
+							<i class="glyphicon glyphicon-home"></i>
+							للبيع</a>
+						</li>
+						<li>
+							<a href="{{ url('/ForRent')}}">
 							<i class="glyphicon glyphicon-user"></i>
-							Account Settings </a>
+							للايجار</a>
 						</li>
+						
+
+
+							<li>
+							<a href="{{ url('/type/0/')}}">
+							<i class="glyphicon glyphicon-user"></i>
+							الشقق</a>
+						</li>
+
 						<li>
-							<a href="#" target="_blank">
-							<i class="glyphicon glyphicon-ok"></i>
-							Tasks </a>
+							<a href="{{ url('/type/1/')}}">
+							<i class="glyphicon glyphicon-user"></i>
+							فيلا</a>
 						</li>
+
 						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
+							<a href="{{ url('/type/2/')}}">
+							<i class="glyphicon glyphicon-user"></i>
+							شاليهات</a>
 						</li>
+
 					</ul>
 				</div>
 				<!-- END MENU -->

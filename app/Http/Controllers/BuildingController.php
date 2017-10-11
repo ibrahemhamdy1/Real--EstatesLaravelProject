@@ -160,7 +160,27 @@ class BuildingController extends Controller
     public function showAllEnable()
     {
 
-        $buAll=building::where('bu_status',1)->orderBy('id','desc')->get();
+        $buAll=building::where('bu_status',1)->orderBy('id','desc')->paginate(2);
+        return view('website.bu.all',compact('buAll'));
+    }
+    public function ForRent()
+    {
+
+        $buAll=building::where('bu_rent',1)->where('bu_status',1)->orderBy('id','desc')->paginate(2);
+        return view('website.bu.all',compact('buAll'));
+    }
+
+    public function ForBuy()
+    {
+
+        $buAll=building::where('bu_rent',0)->where('bu_status',1)->orderBy('id','desc')->paginate(2);
+        return view('website.bu.all',compact('buAll'));
+    }
+
+    public function ShowBytype($id)
+    {
+
+        $buAll=building::where('bu_type',$id)->where('bu_status',1)->orderBy('id','desc')->paginate(2);
         return view('website.bu.all',compact('buAll'));
     }
 }

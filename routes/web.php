@@ -33,3 +33,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ShowAllBulding','BuildingController@showAllEnable');
 
+Route::get('/ForRent','BuildingController@ForRent');
+Route::get('/ForBuy','BuildingController@ForBuy');
+
+Route::get('/type/{type}','BuildingController@ShowBytype');
