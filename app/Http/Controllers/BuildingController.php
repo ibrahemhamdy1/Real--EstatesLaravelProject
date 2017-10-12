@@ -179,8 +179,29 @@ class BuildingController extends Controller
 
     public function ShowBytype($id)
     {
-
+        if (in_array($id, ['0','1','2'])) {
+            # code...
+        
         $buAll=building::where('bu_type',$id)->where('bu_status',1)->orderBy('id','desc')->paginate(2);
+        return view('website.bu.all',compact('buAll'));
+    }else{
+        return redirect ()->back();
+    }
+    }
+
+
+    public function search(Request $request)
+    {
+        
+        $buAll=building::where('bu_status',1)
+                        ->where('bu_price',$request->price_form)
+                        ->where('rooms',$request->rooms)
+                        ->where('bu_type',$request->type)
+                        ->where('bu_rent',$request->rent)
+                        ->where('bu_square',$request->square)
+
+                        ->orderBy('id','desc')
+                        ->paginate(2);
         return view('website.bu.all',compact('buAll'));
     }
 }

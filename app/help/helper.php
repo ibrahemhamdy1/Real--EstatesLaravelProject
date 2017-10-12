@@ -22,4 +22,12 @@ function status()
 	$array=[0=>'غير  مفعل',1=>'مفعل'];
 	return  $array;
 }
+function roomnumber()
+{
+	$array=[];
+	for ($i=0; $i<40 ; $i++) { 
+		$array[]=$i;
+	}
+	return $array;
+}
 ?>

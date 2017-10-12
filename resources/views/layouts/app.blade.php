@@ -36,7 +36,8 @@
     <div class="header">
     <div class="container"> <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
         <div class="menu"> <a class="toggleMenu" href="#"><img src="images/nav_icon.png" alt="" /> </a>
-        <ul class="nav" id="nav">
+            
+        <ul class="nav" id="nav"> 
             <li class="current"><a href="{{url('/home')}}">الرئيسية </a></li>
             <li><a href="about.html">من  نحن </a></li>
             <li><a href="services.html">خدمتنا</a></li>
