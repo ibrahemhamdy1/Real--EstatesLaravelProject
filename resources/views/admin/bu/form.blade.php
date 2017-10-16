@@ -207,7 +207,24 @@
         <div class="clearfix"></div>
         <br>
      <!-- end  bu_latitude  -->
-     
+
+     <!-- bu_palce -->
+        <div class="{{ $errors->has('bu_palce') ? ' has-error' : '' }}">
+            
+             <div class="col-md-10">
+                {!!Form::select("bu_palce",bu_palce(),null,['class'=>'form-control select2']) !!}
+
+                         @if ($errors->has('bu_palce'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('bu_palce') }}</strong>
+                            </span>
+                         @endif
+             </div>
+            <label class="col-md-2"> مكان العقار</label>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+     <!-- end  bu_palce  -->
     <div class="text2">
         <div class="col-md-6 col-md-offset-3">
             <button type="submit" class="btn btn-primary ">

@@ -4,9 +4,9 @@
 @endsection
 @section('header')
 {!! Html::style('cus/buall.css')!!}
+
 @endsection
 @section('content')
- 
 
 <div>
 
@@ -14,42 +14,73 @@
     <div class="row profile">
     	<div class="col-md-9">
             <div class="profile-content">
-			        @include('website.bu.shearfile')
-			        <div class="text-center">
-			        	{{$buAll->appends(Request::except('page'))->render()}}
+            	<ol class="breadcrumb">
+                 <li> <a href="{{url('/')}}">  الرئيسية </a>  </li> 
 
-			        </div>
-			        	
+				  @if(isset($array)&&!empty($array))
+
+				  		@foreach($array as $key=> $value)
+				  			<li> <a href="{{url('/search?'.$key.'='.$value)}}"> {{searchnameFiled()[$key]}} ->
+				  			@if($key =='bu_type')
+				  				{{bu_type()[$value]}}
+				  			@elseif($key =='bu_rent')
+				  				{{bu_rent()[$value]}}
+				  			@elseif($key =='bu_palce')
+				  				{{bu_palce()[$value]}}
+				  			@else
+				  				{{$value}} 	
+
+				  			@endif
+				  		</a></il>
+				  		@endforeach
+				  @endif
+				  
+				</ol>
+			        @include('website.bu.shearfile')
+			        
             </div>
+
+			        	
 		</div>
 		<div class="col-md-3">
+
+
 		<div>
+
 				<div class="profile-sidebar text-center" style="background-color: #fff;margin-bottom: 10px;padding: 10px;">
 		 					<h1>بحث  متقدم</h1>
 						<div class="profile-usermenu">
-							{!!Form::open(['url'=>'search','action'=>'post'])!!}
+							{!!Form::open(['url'=>'search','method'=>'get'])!!}
 								<ul class="nav" style="padding-right:0">
 									<li class="active">
+									<li>
+										{!!Form::text("bu_price_from",null,['class'=>'form-control','placeholder'=>'سعر العقار  من  ','style'=>'margin:5px'])!!}
 									</li>
-										{!!Form::text("price_form",null,['class'=>'form-control','placeholder'=>'سعر العقار','style'=>'margin:5px'])!!}
 									<li>
+										{!!Form::text("bu_price_to",null,['class'=>'form-control','placeholder'=>'س سعر العقار  الى','style'=>'margin:5px'])!!}
+									</li>
+									
+									<li> 
+               						 {!!Form::select("bu_palce",bu_palce(),null,['class'=>'form-control select2','style'=>'margin:5px'])!!}
+									</li>
 									<li>
-										{!!Form::select("rooms",roomnumber(),null,['class'=>'form-control','placeholder'=>'عدد الغرف','style'=>'margin:5px'])!!}
+										{!!Form::select("rooms",roomnumber(),null,['class'=>'form-control','placeholder'=>'عدد الغرف','style'=>'margin:5px '])!!}
+									</li>
+									<li>
+										{!!Form::select("bu_type",bu_type(),null,['class'=>'form-control','placeholder'=>'نوع العقار','style'=>'margin:5px'])!!}
+
+									</li>
+
+									<li>
+										{!!Form::select("bu_rent",bu_rent(),null,['class'=>'form-control','placeholder'=>'نوع العملية','style'=>'margin:5px'])!!}
 
 									</li>
 									<li>
-										{!!Form::select("type",bu_type(),null,['class'=>'form-control','placeholder'=>'نوع العقار','style'=>'margin:5px'])!!}
+										{!!Form::text("bu_square",null,['class'=>'form-control','placeholder'=>'مساحة','style'=>'margin:5px'])!!}
 
 									</li>
-
-									<li>
-										{!!Form::select("rent",bu_rent(),null,['class'=>'form-control','placeholder'=>'نوع العملية','style'=>'margin:5px'])!!}
-
-									</li>
-									<li>
-										{!!Form::text("square",null,['class'=>'form-control','placeholder'=>'مساحة','style'=>'margin:5px'])!!}
-
-									</li>
+									
+									
 									<li> 
 										{!!Form::submit("ابحث",['class','banner-btn'])!!}
 
@@ -108,7 +139,11 @@
 					<!-- END MENU -->
 			</div>
 		</div>
-		
+		@if(!isset($search))
+			<div class="text-center">
+			 {{$buAll->appends(Request::except('page'))->render()}}
+			</div>	
+		@endif	        
 	</div>
 </div>
 
@@ -123,3 +158,9 @@
        
 
 @endsection
+
+@section('footer')
+
+@endsection
+
+ 

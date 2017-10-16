@@ -6,7 +6,7 @@ use App\building;
 use Illuminate\Http\Request ;
 use App\Http\Requests\BuRequest;
 use    DataTables;
-
+use DB;
 use Auth ;
 class BuildingController extends Controller
 {
@@ -192,17 +192,56 @@ class BuildingController extends Controller
 
     public function search(Request $request)
     {
-        
-        $buAll=building::where('bu_status',1)
-                        ->where('bu_price',$request->price_form)
-                        ->where('rooms',$request->rooms)
-                        ->where('bu_type',$request->type)
-                        ->where('bu_rent',$request->rent)
-                        ->where('bu_square',$request->square)
 
-                        ->orderBy('id','desc')
-                        ->paginate(2);
-        return view('website.bu.all',compact('buAll'));
+        // $max=$request->bu_price_to   == '' ? '5000000': $request->bu_price_to;
+
+        // $min=$request->bu_price_from == '' ? '50000'  : $request->bu_price_from;
+        // dd($max,$min);
+
+        $requestAll=array_except($request->toArray(),['submit','_token','page']);
+
+        $query=DB::table('buildings')->select('*');
+
+             $search='search';
+             $array=[];
+             $cout=count($requestAll);
+             $i = 0;
+            foreach ($requestAll as $key => $req)
+            {
+                $i++;
+                    if ($req !='') 
+                    {
+                        # code...
+                    
+                        if($key=='bu_price_from' && $request->bu_price_to =='')
+                        {
+                            $query->where('bu_price','>=',$req);
+
+                        }elseif($key =='bu_price_to'&&$request->bu_price_from =='')
+                        {
+                            $query->where('bu_price','<=',$req);
+
+                        }else
+                        { 
+                            if ($key !='bu_price_to' && $key !='bu_price_from')
+                               {
+                                 $query->where($key,$req);                            
+                               }
+                            
+
+                        }
+
+                        $array[$key]=$req;
+                   
+                    }elseif($cout ==$i &&$request->bu_price_to !='' && $request->bu_price_from !=''){
+                        $query->whereBetween('bu_price',[$request->bu_price_from,$request->bu_price_to]);
+                        $array[$key]=$req;
+
+                    }
+            }
+             
+            $buAll= $query->paginate(1);
+            return view('website.bu.all',compact('buAll','array'));
     }
 }
 

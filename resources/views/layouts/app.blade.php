@@ -8,6 +8,7 @@
     {!! Html::style('website/css/style.css') !!}
     {!! Html::style('website/css/font-awesome.min.css') !!}
     {!! Html::script('website/js/jquery.min.js') !!}
+    {!! Html::style('/cus/css/select2.min.css') !!}
 
     <!-- <link href="website/css/bootstrap.min.css" rel="stylesheet" /> -->
     <!-- <link href="css/flexslider.css" rel="stylesheet" /> -->
@@ -42,6 +43,7 @@
             <li><a href="about.html">من  نحن </a></li>
             <li><a href="services.html">خدمتنا</a></li>
             <li><a href="contact.html">اتصل بنا </a></li>
+            <li><a href="{{url('ShowAllBulding')}}">العقارات </a></li>
 
             @guest
                             <li><a href="{{ route('login') }}">تسجيل الدخول</a></li>
@@ -97,6 +99,16 @@
 </footer>
     @yield('footer')
     
-    
+    {!! Html::script('/cus/js/select2.min.js') !!}
+
+<script>
+       $(document).ready(function() {
+        
+            $('.select2').select2({
+
+                dir:"rtl"
+            });
+        }); 
+</script>
 </body>
 </html>

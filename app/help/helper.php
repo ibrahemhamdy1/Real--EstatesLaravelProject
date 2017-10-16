@@ -30,4 +30,23 @@ function roomnumber()
 	}
 	return $array;
 }
+
+function searchnameFiled()
+{
+	return  ['bu_price'=>'سعر العقار',
+			 'bu_palce'=>'مكان العقار',
+			 'rooms'=>'عدد الغرف',
+			 'bu_type'=>'نوع العقار ',
+			 'bu_rent'=>'نوع العملية ',
+			 'bu_square'=>'المساحة',
+			 'bu_price_to'=>'السعر الى ',
+			 'bu_price_from'=>'السعر من',];
+}
+function bu_palce()
+{
+
+	return  ['0'=>'القاهرة' ,'1'=>'المنصورة '];
+}
 ?>
+  
+

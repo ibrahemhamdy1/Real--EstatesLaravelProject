@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class building extends Model
 {
     protected  $table="buildings";
-    protected  $fillable=["bu_name", "bu_price", "bu_rent", "bu_square", "bu_type", "bu_small_dis", "bu_large_dis","bu_meta", "bu_longitude", "bu_latitude", "bu_status", "rooms","user_id"];
+    protected  $fillable=["bu_name", "bu_price", "bu_rent", "bu_square", "bu_type", "bu_small_dis", "bu_large_dis","bu_meta", "bu_longitude", "bu_latitude",'bu_palce', "bu_status", "rooms","user_id"];
 }
 

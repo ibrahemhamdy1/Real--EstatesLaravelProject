@@ -37,4 +37,4 @@ Route::get('/ForRent','BuildingController@ForRent');
 Route::get('/ForBuy','BuildingController@ForBuy');
 
 Route::get('/type/{type}','BuildingController@ShowBytype');
-Route::get('/search','BuildingController@search');
+Route::get('/search/','BuildingController@search');

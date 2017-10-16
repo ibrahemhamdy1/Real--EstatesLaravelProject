@@ -5,7 +5,11 @@
     {{$bu->bu_name}}
 @endsection
 
+@section('header')
 
+ {!! Html::style('cus/css/select2.min.css') !!}
+
+@endsection
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -71,9 +75,15 @@
 {!! Html::script('/admin/bower_components/datatables.net/js/jquery.dataTables.min.js') !!}
 
 {!! Html::script('/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
+ {!! Html::script('cus/js/select2.min.js') !!}
 
 <script>
-  
+   $(document).ready(function() {
+   $('.select2').select2({
+
+          dir:"rtl"
+        });
+}); 
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,

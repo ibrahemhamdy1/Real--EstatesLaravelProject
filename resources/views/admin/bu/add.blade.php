@@ -3,6 +3,11 @@
             اضاف العقار جديد 
 @endsection
 
+@section('header')
+
+ {!! Html::style('cus/css/select2.min.css') !!}
+
+@endsection
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -54,9 +59,18 @@
 {!! Html::script('/admin/bower_components/datatables.net/js/jquery.dataTables.min.js') !!}
 
 {!! Html::script('/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') !!}
+ {!! Html::script('cus/js/select2.min.js') !!}
+// In your Javascript (external .js resource or
 
 <script>
-  
+  $(document).ready(function() {
+  $('.select2').select2({
+
+          dir:"rtl"
+        });
+}); 
+
+
     $('#example2').DataTable({
       'paging'      : true,
       'lengthChange': true,
