@@ -15,11 +15,47 @@
 @section('content')
 <div class="banner text-center">
   <div class="container">
-    <div class="banner-info">
-      <h1>Lorem ipsum dolor sit amet</h1>
-      <p>Lorem ipsum dolor sit amet, facilisis egestas sodales non luctus,<br>
-        sem quas potenti malesuada vel phasellus.</p>
-      <a class="banner_btn" href="about.html">Read More</a> </div>
+    <div class="banner-info"> 
+           <h1> 
+                اهلا بيك  فى 
+                {{getString()}}  
+            </h1>
+        <div class="row"> 
+          {!!Form::open(['url'=>'search','method'=>'get'])!!}
+              <div class="col-md-4"> 
+                    {!!Form::text("bu_price_from",null,['class'=>'form-control','placeholder'=>'سعر العقار  من  ','style'=>'margin:5px'])!!}
+              </div> 
+              <div class="col-md-4">      
+                    {!!Form::text("bu_price_to",null,['class'=>'form-control','placeholder'=>'س سعر العقار  الى','style'=>'margin:5px'])!!}
+              </div>
+              
+              <div class="col-md-4">      
+
+                    {!!Form::select("rooms",roomnumber(),null,['class'=>'form-control','placeholder'=>'عدد الغرف','style'=>'margin:5px'])!!}
+              </div>  
+              <div class="col-md-4">      
+
+                    {!!Form::select("bu_type",bu_type(),null,['class'=>'form-control','placeholder'=>'نوع العقار','style'=>'margin:5px'])!!}
+              </div>
+              <div class="col-md-4">      
+
+                    {!!Form::select("bu_rent",bu_rent(),null,['class'=>'form-control','placeholder'=>'نوع العملية','style'=>'margin:5px'])!!}
+              </div>
+              <div class="col-md-4">      
+
+                    {!!Form::text("bu_square",null,['class'=>'form-control','placeholder'=>'مساحة', 'style'=>'margin:5px'])!!}
+              </div>
+                 
+                  
+                <div class="col-md-12">      
+ 
+                           {!!Form::select("bu_palce",bu_palce(),null,['class'=>'form-control select2','style'=>'margin:5px ; width:1040px'])!!}
+              </div>  
+                    {!!Form::submit("ابحث",['class','banner_btn','style'=>'margin:5px ;'])!!}
+
+              {!!Form::close()!!}
+
+      <a class="banner_btn" href="{{url('/')}}">Read More</a> </div>
   </div>
 </div>
 <div class="main">
