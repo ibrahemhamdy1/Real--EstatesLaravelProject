@@ -243,5 +243,14 @@ class BuildingController extends Controller
             $buAll= $query->paginate(1);
             return view('website.bu.all',compact('buAll','array'));
     }
+
+    public function ShowSingle($id)
+    {
+            $buInfo =building::findOrFail($id);
+            $same_rent=building::where('bu_rent',$buInfo->bu_rent)->orderBy(DB::raw('RAND()'))->take(5)->get();
+            $same_type=building::where('bu_type',$buInfo->bu_type)->orderBy(DB::raw('RAND()'))->take(5)->get();
+
+            return  view('website.bu.buInfo',compact('buInfo','same_rent','same_type'));    
+    }
 }
 
