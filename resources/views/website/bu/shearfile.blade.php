@@ -2,7 +2,14 @@
 	@foreach($buAll as $b)
 		<div class="col-md-3 col-sm-6 text-center pull-right  " style="max-height: 400px">
             <span class="thumbnail" >
-                <img  src="https://s12.postimg.org/41uq0fc4d/item_2_180x200.png" alt="...">
+
+                @if($b->image!="")
+                <img  src="{{Request::root().'/'.$b->image}}" alt="..." width="100px" height="100px">
+                @else
+                    <img  src="{{Request::root().'/website/images/default.png'}}" alt="..." width="100px" height="100px">
+                @endif
+                                
+
                 <div > 
                     <h3 style="max-height: 4px">{{$b->bu_name}}</h3>
                                     

@@ -35,7 +35,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('adminpanel/bu') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('adminpanel/bu') }}"  enctype="multipart/form-data">
 
                         @include('admin.bu.form')
 

@@ -27,9 +27,11 @@ class CreateBuildingsTable extends Migration
             $table->integer('bu_palce');
             $table->longText('bu_large_dis');
             $table->smallInteger('bu_status');
-            $table->timestamps();
             $table->integer('user_id');
             $table->integer('rooms');
+            $table->string('image',250);
+            $table->timestamps();
+            
         });
     }
 

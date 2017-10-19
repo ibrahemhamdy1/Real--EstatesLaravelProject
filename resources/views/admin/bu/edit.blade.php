@@ -41,7 +41,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    {!!Form::model($bu,array('method'=>'PATCH','action'=>['BuildingController@update',$bu->id]))!!}
+                    {!!Form::model($bu,array('method'=>'PATCH','files'=>'true','action'=>['BuildingController@update',$bu->id]))!!}
                             @include('admin.bu.form')
                             <div class="clearfix">
                         </div>

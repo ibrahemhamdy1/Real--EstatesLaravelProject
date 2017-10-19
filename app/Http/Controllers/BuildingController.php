@@ -40,7 +40,12 @@ class BuildingController extends Controller
         {
             $user = Auth::user();
            
-
+        $input=$request->all();
+        if(isset($input['image'])){
+                $input['image']=$this->upload($input['image']);
+        }else{
+                $input['image']='website/images/default.png';
+        }
                $bu->create([
                        'bu_name'       =>$request->bu_name,
                        'bu_price'      =>$request->bu_price,
@@ -55,7 +60,10 @@ class BuildingController extends Controller
                        'bu_status'     =>$request->bu_status,
                        'rooms'         =>$request->rooms,
                        'user_id'       =>$user->id,
-            ]);
+                       'bu_palce'      =>$request->bu_palce,
+                       'image'         =>$input['image'],
+
+                           ]);
            //dd($items);
            //BuRequest::create($items);
             
@@ -94,11 +102,29 @@ class BuildingController extends Controller
          */
         public function update($id,BuRequest $request)
         {
-            $buUpdate=building::findOrFail($id);
-            $buUpdate->fill($request->all())->save();
+            
+
+
+        $input=$request->all();
+        if(isset($input['image'])){
+                $input['image']=$this->upload($input['image']);
+        
+        }
+        building::findOrFail($id)->update($input);
+
             return   redirect ()->back()->withFlashMessage('you  update  a  building');
         }
-
+        //strat of this  is  the image  function  
+        public function upload($file){
+                $extension =$file->getClientOriginalExtension();
+                $sha1 =sha1($file->getClientOriginalName());
+                $filename=date('Y-m-d-i-s')."_".$sha1.".".$extension;
+                $path=public_path('/website/images/');
+                $file->move($path,$filename);
+                return  'website/images/'.$filename;
+                
+            }
+        //end of this  is  the image  function  
         /**
          * Remove the specified resource from storage.
          *

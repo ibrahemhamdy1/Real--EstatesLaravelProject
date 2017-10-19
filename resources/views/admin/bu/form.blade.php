@@ -225,6 +225,35 @@
         <div class="clearfix"></div>
         <br>
      <!-- end  bu_palce  -->
+
+
+ <!-- bu_image -->
+        <div class="{{ $errors->has('bu_palce') ? ' has-error' : '' }}">
+            
+             <div class="col-md-10">
+                @if(isset($bu))
+                    @if($bu !='')
+                        <img  src="{{Request::root().'/'.$bu->image}}" width="100px" height="100px"> 
+
+                    
+                    @endif
+                @endif                     
+                    {!!Form::file("image",['class'=>'form-control ']) !!}
+
+                         @if ($errors->has('image'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('image') }}</strong>
+                            </span>
+                         @endif
+                    
+             </div>
+            <label class="col-md-2"> صورة العقار</label>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+     <!-- end  bu_image  -->
+
+
     <div class="text2">
         <div class="col-md-6 col-md-offset-3">
             <button type="submit" class="btn btn-primary ">
