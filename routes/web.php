@@ -32,10 +32,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ShowAllBulding','BuildingController@showAllEnable');
+Route::get('/searchajax','UsersController@autoComplete');
+Route::get('/findUser/','UsersController@findUser');
 
 Route::get('/ForRent','BuildingController@ForRent');
 Route::get('/ForBuy','BuildingController@ForBuy');
 
 Route::get('/type/{type}','BuildingController@ShowBytype');
 Route::get('/search/','BuildingController@search');
+
 Route::get('/singleBuilding/{id}','BuildingController@ShowSingle');

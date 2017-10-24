@@ -52,7 +52,7 @@ class UsersController extends Controller
         //dd($request->password);
         $userUpdated->fill(['password'=>$password])->save();
         return redirect ()->back()->withFlashMessage('you  update a   user password');
-}
+    }
 
 public function destroy($id)
 {
@@ -105,4 +105,29 @@ public function anyData(User $user)
         ->make(true);
 
 }
+
+
+    public function autoComplete(Request $request) {
+        $query = $request->get('term','');
+        
+        $products=User::where('name','LIKE','%'.$query.'%')->get();
+        $data=array();
+        foreach ($products as $product) {
+                $data[]=array('value'=>$product->email,'id'=>$product->id);
+        }
+        if(count($data))
+             return $data;
+        else
+            return ['value'=>'No Result Found','id'=>''];
+    }
+
+    public function findUser(Request $request)
+    {        
+
+              $user=  User::where('email',$request['search_text'])->get();
+
+              return  view('user' ,compact('user'));
+
+            }
+    
 }

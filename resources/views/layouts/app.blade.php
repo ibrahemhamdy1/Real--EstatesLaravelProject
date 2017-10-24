@@ -100,8 +100,8 @@
                                 @endguest
                     <div class="clear"></div>
                 </ul>
-                <script type="text/javascript" src="js/responsive-nav.js"></script> 
-            </div>
+<!--                 <script type="text/javascript" src="js/responsive-nav.js"></script> 
+ -->            </div>
         </div>
         </div>
         <div id="app">
@@ -126,9 +126,13 @@
           </div>
         </div>
         </footer>
+
             @yield('footer')
             
             {!! Html::script('/cus/js/select2.min.js') !!}
+            <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<!-- <script src="YourJquery source path"></script> -->
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 
         <script>
                $(document).ready(function() {
@@ -139,5 +143,6 @@
                     });
                 }); 
         </script>
+        
 </body>
 </html>
